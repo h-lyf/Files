@@ -1,0 +1,48 @@
+{
+  "inbounds": [
+    {
+      "type": "tuic",
+      "tag": "tuic-in",
+      "listen": "::",
+      "listen_port": 10614,
+      "users": [
+        {
+          "uuid": "d2bda036-4b66-4d49-bbfa-5fcb0e21eb25",
+          "password": "qgClJerbob1UCqw2nyXy"
+        }
+      ],
+      "congestion_control": "bbr",
+      "tls": {
+        "enabled": true,
+        "alpn": [
+          "h3"
+        ],
+        "certificate_path": "/etc/sing-box/cert.pem",
+        "key_path": "/etc/sing-box/key.pem"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "vless-in",
+      "listen": "::",
+      "listen_port": 10614,
+      "users": [
+        {
+          "uuid": "d2bda036-4b66-4d49-bbfa-5fcb0e21eb25",
+          "flow": ""
+        }
+      ],
+      "transport": {
+        "type": "ws",
+        "path": "",
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ]
+}
