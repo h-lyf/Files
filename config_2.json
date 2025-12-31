@@ -47,23 +47,6 @@
           ]
         }
       }
-    },
-    {
-      "type": "vless",
-      "tag": "vless-ws-in",
-      "listen": "::",
-      "listen_port": $CF_PORT,
-      "users": [
-        {
-          "uuid": "$UUID",
-          "flow": ""
-        }
-      ],
-      "transport": {
-        "type": "ws",
-        "path": "",
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      }
     }
   ],
   "outbounds": [
