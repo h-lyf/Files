@@ -1,48 +1,75 @@
 {
-  "inbounds": [
-    {
-      "type": "tuic",
-      "tag": "tuic-in",
-      "listen": "::",
-      "listen_port": 8080,
-      "users": [
+    "inbounds": [
         {
-          "uuid": "$UUID",
-          "password": "$PASSWD"
-        }
-      ],
-      "congestion_control": "bbr",
-      "tls": {
-        "enabled": true,
-        "alpn": [
-          "h3"
-        ],
-        "certificate_path": "$CERT",
-        "key_path": "$KEY"
-      }
-    },
-    {
-      "type": "vless",
-      "tag": "vless-in",
-      "listen": "::",
-      "listen_port": 8080,
-      "users": [
+            "type": "tuic",
+            "tag": "tuic-in",
+            "listen": "::",
+            "listen_port": $TUIC_PORT,
+            "users": [
+                {
+                    "uuid": "$UUID",
+                    "password": "$PASSWD"
+                }
+            ],
+            "congestion_control": "bbr",
+            "auth_timeout": "3s",
+            "zero_rtt_handshake": false,
+            "heartbeat": "10s",
+            "tls": {
+                "enabled": true,
+                "alpn": [
+                    "h3"
+                ],
+                "certificate_path": "$CERT_PATH",
+                "key_path": "$KEY_PATH"
+            }
+        },
         {
-          "uuid": "$UUID",
-          "flow": ""
+            "type": "vless",
+            "tag": "reality-in",
+            "listen": "::",
+            "listen_port": $REALITY_PORT,
+            "users": [
+                {
+                    "uuid": "$UUID",
+                    "flow": "xtls-rprx-vision"
+                }
+            ],
+            "tls": {
+                "enabled": true,
+                "reality": {
+                    "enabled": true,
+                    "handshake": {
+                        "server": "www.microsoft.com",
+                        "server_port": 443
+                    },
+                    "private_key": "$PrivateKey",
+                    "short_id": [
+                        "$ShortID"
+                    ]
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "vless-ws-in",
+            "listen": "::",
+            "listen_port": $WS_PORT,
+            "users": [
+                {
+                    "uuid": "$UUID"
+                }
+            ],
+            "transport": {
+                "type": "ws",
+                "path": "/api"
+            }
         }
-      ],
-      "transport": {
-        "type": "ws",
-        "path": "",
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      }
-    }
-  ],
-  "outbounds": [
-    {
-      "type": "direct",
-      "tag": "direct"
-    }
-  ]
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct"
+        }
+    ]
 }
