@@ -1,0 +1,75 @@
+{
+  "inbounds": [
+    {
+      "type": "tuic",
+      "tag": "tuic-in",
+      "listen": "::",
+      "listen_port": $PORT,
+      "users": [
+        {
+          "uuid": "$UUID",
+          "password": "$PASSWD"
+        }
+      ],
+      "congestion_control": "bbr",
+      "tls": {
+        "enabled": true,
+        "alpn": [
+          "h3"
+        ],
+        "certificate_path": "$CERT",
+        "key_path": "$KEY"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "vless-reality-in",
+      "listen": "::",
+      "listen_port": $PORT,
+      "users": [
+        {
+          "uuid": "$UUID",
+          "flow": "xtls-rprx-vision"
+        }
+      ],
+      "tls": {
+        "enabled": true,
+        "server_name": "www.microsoft.com",
+        "reality": {
+          "enabled": true,
+          "handshake": {
+            "server": "www.microsoft.com",
+            "server_port": 443
+          },
+          "private_key": "MM8UR5j1xQ1BlZ4qqie9ggSXYqpusUlS28jwF-nGmls",
+          "short_id": [
+            "079fa2f092ab0351"
+          ]
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "vless-ws-in",
+      "listen": "::",
+      "listen_port": $CF_PORT,
+      "users": [
+        {
+          "uuid": "$UUID",
+          "flow": ""
+        }
+      ],
+      "transport": {
+        "type": "ws",
+        "path": "",
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ]
+}
