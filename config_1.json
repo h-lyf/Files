@@ -25,7 +25,7 @@
       "type": "vless",
       "tag": "vless-in",
       "listen": "::",
-      "listen_port": $PORT,
+      "listen_port": $ARGO_PORT,
       "users": [
         {
           "uuid": "$UUID",
