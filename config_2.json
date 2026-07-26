@@ -34,11 +34,11 @@
       ],
       "tls": {
         "enabled": true,
-        "server_name": "www.microsoft.com",
+        "server_name": "www.cloudflare.com",
         "reality": {
           "enabled": true,
           "handshake": {
-            "server": "www.microsoft.com",
+            "server": "www.cloudflare.com",
             "server_port": 443
           },
           "private_key": "IDmR0olrtLWEZTf3avwtmg5b1FX1l81Cx5jUURWAdWU",
