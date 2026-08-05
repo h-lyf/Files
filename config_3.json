@@ -2,19 +2,29 @@
   "inbounds": [
     {
       "type": "vless",
-      "tag": "vless-in",
+      "tag": "vless-reality-in",
       "listen": "::",
-      "listen_port": $ARGO_PORT,
+      "listen_port": $PORT,
       "users": [
         {
           "uuid": "$UUID",
-          "flow": ""
+          "flow": "xtls-rprx-vision"
         }
       ],
-      "transport": {
-        "type": "ws",
-        "path": "",
-        "early_data_header_name": "Sec-WebSocket-Protocol"
+      "tls": {
+        "enabled": true,
+        "server_name": "www.cloudflare.com",
+        "reality": {
+          "enabled": true,
+          "handshake": {
+            "server": "www.cloudflare.com",
+            "server_port": 443
+          },
+          "private_key": "iHlw8fdi4ycZcRgdKqyoNwzpJkZBgrmjgFgchq2fgHU",
+          "short_id": [
+            "baefdee3aec7bf53"
+          ]
+        }
       }
     },
     {
