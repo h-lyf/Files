@@ -43,7 +43,24 @@
     {
       "type": "direct",
       "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
     }
-  ]
+  ],
+  "endpoints": [
+    {
+      "type": "tailscale",
+      "tag": "ts-ep",
+      "hostname": "exe.dev",
+      "state_directory": "./tailscale",
+      "system_interface": true,
+      "accept_routes": true
+    }
+  ],
+  "route": {
+    "auto_detect_interface": true,
+    "final": "direct"
+  }
 }
-
