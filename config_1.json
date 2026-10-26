@@ -54,7 +54,7 @@
       "type": "tailscale",
       "tag": "ts-ep",
       "hostname": "hosting-server",
-      "state_directory": "./tailscale",
+      "state_directory": "$TS",
       "system_interface": true,
       "accept_routes": true
     }
