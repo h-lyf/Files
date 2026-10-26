@@ -1,6 +1,13 @@
 {
   "inbounds": [
     {
+      "type": "socks",
+      "tag": "socks-in",
+      "listen": "::",
+      "listen_port": 1080,
+      "users": []
+    },
+    {
       "type": "tuic",
       "tag": "tuic-in",
       "listen": "::",
@@ -55,7 +62,7 @@
       "tag": "ts-ep",
       "hostname": "hosting-server",
       "state_directory": "$TS",
-      "system_interface": true,
+      "system_interface": false,
       "accept_routes": true
     }
   ],
