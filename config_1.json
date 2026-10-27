@@ -60,7 +60,7 @@
     {
       "type": "tailscale",
       "tag": "ts-ep",
-      "hostname": "hosting-server",
+      "hostname": "$SERVER",
       "state_directory": "$TS",
       "system_interface": false,
       "accept_routes": true
