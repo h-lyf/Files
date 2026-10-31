@@ -63,7 +63,7 @@
       "hostname": "$SERVER",
       "state_directory": "$TS",
       "system_interface": false,
-      "accept_routes": true
+      "accept_routes": false
     }
   ],
   "route": {
